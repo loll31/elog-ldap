@@ -47,4 +47,4 @@ You can then access from a browser at http://localhost:8080
 The current image builds from alpine:3.13 (make fails with 3.14) and the lastest released version of elog. 
 In time I will pin down versions so that the docker is stable against changes in the dependancies.
 
-This ELOG Docker providew ImageMagick and CKeditor (included in ELOG scripts sources).
+This ELOG Docker provides ImageMagick and CKeditor (included in ELOG scripts sources).
