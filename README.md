@@ -44,6 +44,7 @@ or by any other way you make/mount a volue to docker.
 You can then access from a browser at http://localhost:8080
 
 ## Some asides
-The current image builds from latest alpine and the lastest released version of elog. In time I will pin down versions so that the docker is stable against changes in the dependancies.
+The current image builds from alpine:3.13 (make fails with 3.14) and the lastest released version of elog. 
+In time I will pin down versions so that the docker is stable against changes in the dependancies.
 
-Docker is provided with imagemagick and ckeditor (included in scripts sources).
+This ELOG Docker providew ImageMagick and CKeditor (included in ELOG scripts sources).
