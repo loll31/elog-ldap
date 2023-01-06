@@ -20,7 +20,7 @@ You can modify the elogd.cfg file if you like, or not, and then build
 docker build -t elog-ldap .
 ```
 
-You can also get the images directly from docker, useful if you want to deploy directly
+You can also get the images directly from docker, useful if you want to deploy directly from Portainer by example...
 
 ```
 docker pull usinagaz/elog-ldap
@@ -39,12 +39,16 @@ Here my-logbooks is a docker defined volume, this can be made with
 ```
 docker volume create my-logbooks
 ```
-or by any other way you make/mount a volue to docker.
+or by any other way you make/mount a volume to docker.
 
-You can then access from a browser at http://localhost:8080
+The elogd.cfg and elogd.passwd binds permit to define custom elog configuration and to keep user DB changes.
+
+Normally, You can then access from a browser at http://localhost:8080.
 
 ## Some asides
 The current image builds from alpine:3.13 (make fails with 3.14) and the lastest released version of elog. 
 In time I will pin down versions so that the docker is stable against changes in the dependancies.
 
 This ELOG Docker provides ImageMagick and CKeditor (included in ELOG scripts sources).
+
+Logbooks subscription to received mails are not tested at this time. Thanks to report if OK or Not.
