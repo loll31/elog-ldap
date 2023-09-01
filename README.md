@@ -1,12 +1,20 @@
 # elog-ldap
-ELOG logbook manager with ldap authentification in an Alpine based docker.
+ELOG logbook manager with ldap authentification in an minideb based docker.
 
-This Dockerfile creates a docker image of an elog server (https://midas.psi.ch/elog/) built on Alpine linux (https://alpinelinux.org/).
-This version is a fork of **fincle/elog-alpine** docker with LDAP support.
+This Dockerfile creates a docker image of an elog server (https://midas.psi.ch/elog/) built on Debian linux (https://www.debian.org).
+This version is a fork of **fincle/elog-alpine** docker with LDAP support. 
+AlpineLinux was abandonned as ELOGD exits with core dump (illegal instruction) when any enclosure is added to elog.
 
 The idea is to build the lightest possible deployment so that it may be run on a lab computer with many other common tools: i.e. to have the least possible overhead.
 
 A number of other docker builds use Ubuntu and Debian, and, therefore contain a lot of unnecessary stuff. This is an attempt to make it as small as possible with all config and data stored in an mounted volume external to the container.
+
+The elog stuff remains instakked as default (make install) :
++ elog.cfg is under /usr/local/elog (bind it for custom file)
++ elog password file can be set anywhere, regarding your elog.conf configuration (bind it for persistance)
++ logbboks are under /usr/local/elog/logbooks (bind folder for persistance)
+
+
 
 ## Building the docker image locally
 Pull docker from github with
@@ -98,7 +106,7 @@ This feature is untested with this docker.
 
 
 ## Some asides
-The current image builds from alpine:3.13 (make fails with 3.14) and the lastest released version of elog. 
+The current image builds from minideb and the lastest git version of elog.
 
 This ELOG Docker provides ImageMagick and CKeditor (included in ELOG scripts sources).
 
