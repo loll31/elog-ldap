@@ -28,28 +28,33 @@ You can modify the elogd.cfg file if you like, or not, and then build
 docker build -t elog-ldap .
 ```
 
-You can also get the images directly from docker, useful if you want to deploy directly from Portainer by example...
+You can also get the images directly from Docker Hub, useful if you want to deploy it directly from Portainer tool by example...
 
 ```
 docker pull usinagaz/elog-ldap
 ```
 
-To run the docker image on local machine
+To run and test the docker image on local machine
 ```
 docker run -p 8080:8080 \
-  --mount source=my-logbooks,target=/usr/local/elog/logbooks \
-  --mount source=/path/to/elogd.cfg,target=/usr/local/elog/elogd.cfg \
-  --mount source=/path/to/elogd.passwd,target=/etc/elogd.passwd \
+  --mount type=bind,source=elog/mylogbooks,target=/usr/local/elog/logbooks \
+  --mount type=bind,source=./elogd.cfg,target=/usr/local/elog/elogd.cfg \
+  --mount type=bind,source=./elog/elogd.passwd,target=/etc/elogd.passwd \
   elog-ldap:latest
 ```
 
-Here my-logbooks is a docker defined volume, this can be made with 
+Here mylogbooks is a docker defined volume, this can be made with 
 ```
-docker volume create my-logbooks
+docker volume create mylogbooks
 ```
 or by any other way you make/mount a volume to docker.
 
 The elogd.cfg and elogd.passwd binds permit to define custom elog configuration and to keep user DB changes.
+The files must be writable by default used in docker, i.e elog with id 1031 :
+```
+chown 1031 elogd.cfg elog/elogd.passwd elog/mylogbooks
+```
+
 
 Normally, You can then access from a browser at http://localhost:8080.
 

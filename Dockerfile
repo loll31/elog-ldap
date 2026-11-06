@@ -44,7 +44,8 @@ COPY --from=builder /usr/local/bin/elconv /usr/local/bin/elconv
 # Install build dependencies
 RUN install_packages imagemagick bash
 RUN install_packages openssl ca-certificates
-RUN install_packages libldap-2.5-0
+# RUN install_packages libldap-2.5-0 # KO
+RUN install_packages libldap2
 
 # Adding default config files from build folder
 COPY ./elogd.cfg /usr/local/elog/elogd.cfg
